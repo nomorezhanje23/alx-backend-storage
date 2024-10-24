@@ -13,7 +13,7 @@ redis_store = redis.Redis()
 
 
 def data_cacher(method: Callable) -> Callable:
-    '''Caches the outputs of fetched data.
+    '''Caches the output of fetched data.
     '''
     @wraps(method)
     def invoker(url) -> str:
@@ -32,7 +32,7 @@ def data_cacher(method: Callable) -> Callable:
 
 @data_cacher
 def get_page(url: str) -> str:
-    '''Returns the contents of a URL after caching the request's response,
+    '''Returns the content of a URL after caching the request's response,
     and tracking the request.
     '''
     return requests.get(url).text
